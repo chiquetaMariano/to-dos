@@ -5,11 +5,14 @@
  * I want to be able to create, edit and delete to-do items
  */
 
+import UserService from "../src/services/UserService";
+import TodoService from "../src/services/TodoService";
+
 describe("to-do items management", () => {
 
     it("should create a to-do item", () => {
-        let user = new User("John Doe");
-        let newTodo = {description: "lorem ipsum dolor sit amet."};
+        let user = new UserService("John Doe");
+        let newTodo = new TodoService("lorem ipsum dolor sit amet.");
 
         user.addTodo(newTodo);
 
