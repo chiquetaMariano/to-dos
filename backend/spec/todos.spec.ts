@@ -10,17 +10,20 @@ import TodoService from "../src/services/TodoService";
 
 describe("to-do items management", () => {
 
+    let user = new UserService("John Doe");
+    let todo = new TodoService("lorem ipsum dolor sit amet.", false, 250);
+
     it("should create a to-do item", () => {
-        let user = new UserService("John Doe");
-        let newTodo = new TodoService("lorem ipsum dolor sit amet.");
-
-        user.addTodo(newTodo);
-
-        expect(user.todoList).toContain(newTodo);
+        user.addTodo(todo);
+        expect(user.todoList).toContain(todo);
     });
 
     it("should edit a to-do item", () => {
-        
+        let newTodo = new TodoService("My new to-do description", true, 250);
+        user.updateTodo(newTodo);
+
+        expect(user.todoList.length).toBe(1);
+        expect(user.todoList).toContain(newTodo);
     });
 
     it("should delete a to-do item", () => {
