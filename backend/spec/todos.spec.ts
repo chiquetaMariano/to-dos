@@ -19,7 +19,7 @@ describe("to-do items management", () => {
     });
 
     it("should edit a to-do item", () => {
-        let newTodo = new TodoService("My new to-do description", true, 250);
+        let newTodo = new TodoService("My new to-do description", false, 250);
         user.updateTodo(newTodo);
 
         expect(user.todoList.length).toBe(1);
@@ -27,6 +27,9 @@ describe("to-do items management", () => {
     });
 
     it("should delete a to-do item", () => {
-        
+        user.deleteTodo(todo);
+
+        expect(user.todoList).not.toContain(todo);
+        expect(user.todoList.length).toBe(0);
     });
 });
