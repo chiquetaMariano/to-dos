@@ -12,6 +12,6 @@
         "strictNullChecks": true,
         "noImplicitThis": true
     },
-    "include": ["./src/**/*"],
+    "include": ["./src/**/*", "./models/*"],
     "exclude": ["node_modules", "spec"]
 }
