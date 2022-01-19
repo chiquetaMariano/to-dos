@@ -1,13 +1,13 @@
 import { Model } from "sequelize";
 
 interface UserAttributes {
-  id: number,
-  fullname: string,
-  email: string,
-  password: string
+  id: number;
+  fullname: string;
+  email: string;
+  password: string;
 }
 
-const UserFactory = (sequelize: any, DataTypes: any) => {
+const User = (sequelize: any, DataTypes: any) => {
   class User extends Model<UserAttributes> implements UserAttributes {
     /**
      * Helper method for defining associations.
@@ -20,6 +20,7 @@ const UserFactory = (sequelize: any, DataTypes: any) => {
     password!: string;
     static associate(models: any) {
       // define association here
+      User.hasMany(models.Todo)
     }
   }
   User.init({
@@ -34,4 +35,4 @@ const UserFactory = (sequelize: any, DataTypes: any) => {
   return User;
 };
 
-export default UserFactory;
+export default User;1
