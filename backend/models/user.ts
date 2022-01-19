@@ -35,4 +35,5 @@ const User = (sequelize: any, DataTypes: any) => {
   return User;
 };
 
-export default User;1
+// In order to work, we must use commonjs exports, not ES6
+module.exports = User;
