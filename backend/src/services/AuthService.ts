@@ -9,12 +9,6 @@ export default class AuthService {
         const salt = randomBytes(32);
         const passwordHashed = await argon2.hash(password, {salt});
 
-        const existingUser = await db.User.findOne({ email });
-
-        if(existingUser) {
-            throw new Error("The provided email is not available");
-        }
-
         const user = await db.User.create({
             fullname,
             email,
@@ -30,7 +24,7 @@ export default class AuthService {
     }
 
     public async Login(email: string, password: string): Promise<any> {
-        const user = await db.User.findOne({ email });
+        const user = await db.User.findOne({ where: {email} });
         if(!user) {
             throw new Error("User not found");
         }
