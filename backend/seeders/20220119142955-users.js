@@ -17,6 +17,16 @@ async function usersFactory(quantity) {
     users.push(user);
   }
 
+  // default user
+  users.push({
+    fullname: "admin",
+    email: "admin@admin",
+    password: await argon2.hash("admin1234", { salt: randomBytes(32) }),
+    createdAt: faker.date.recent(),
+    updatedAt: faker.date.recent()
+
+  });
+
   return users;
 }
 
