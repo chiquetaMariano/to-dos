@@ -9,7 +9,11 @@ export default class AuthService {
         const salt = randomBytes(32);
         const passwordHashed = await argon2.hash(password, {salt});
 
-        // TODO: check email availability
+        const existingUser = await db.User.findOne({ email });
+
+        if(existingUser) {
+            throw new Error("The provided email is not available");
+        }
 
         const user = await db.User.create({
             fullname,
