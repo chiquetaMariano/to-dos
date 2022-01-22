@@ -13,7 +13,7 @@ interface UserData {
 
 export default async (req: Request & UserData, res: Response, next: NextFunction) => {
     const decodedToken = req.token.data;
-    const user = await db.User.findOne({ id: decodedToken.id });
+    const user = await db.User.findOne({ where: {id: decodedToken.id} });
 
     req.currentUser = user;
 

@@ -1,6 +1,6 @@
 import { Model } from "sequelize";
 
-interface UserAttributes {
+export interface UserAttributes {
   id: number;
   fullname: string;
   email: string;
@@ -35,5 +35,5 @@ const User = (sequelize: any, DataTypes: any) => {
   return User;
 };
 
-// In order to work, we must use commonjs exports, not ES6
+// In order to work correctly, we must use commonjs exports, not ES6
 module.exports = User;
