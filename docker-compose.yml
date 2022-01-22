@@ -2,11 +2,12 @@ version: '3.1'
 
 services:
 
-  app:
+  backend:
     image:  node:14-alpine
     command: sh -c "yarn && yarn start"
     ports:
       - 8080:8080
+      - 9229:9229
     working_dir: /app
     volumes:
       - ./backend:/app
@@ -15,6 +16,15 @@ services:
       MYSQL_USER: root
       MYSQL_PASSWORD: secret
       MYSQL_DB: todos
+
+  frontend:
+    image:  node:14-alpine
+    command: sh -c "yarn && yarn start"
+    ports:
+      - 3000:3000
+    working_dir: /app
+    volumes:
+      - ./frontend:/app
   
   db:
     image: mysql
