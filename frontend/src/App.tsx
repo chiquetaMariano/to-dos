@@ -1,10 +1,20 @@
-import './App.css';
+import {
+  HashRouter as Router,
+  Routes,
+  Route
+} from "react-router-dom";
+import "./App.css";
+
+import { SignUp, SignIn } from "./routes";
 
 function App() {
   return (
-    <div className="App">
-      <p>todos</p>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/signin" element={<SignIn />} />
+      </Routes>
+    </Router>
   );
 }
 
