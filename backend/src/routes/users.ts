@@ -30,7 +30,7 @@ router.post('/register', async (req: Request, res: Response) => {
     }
     else {
         const authService = new AuthService();
-        const user = await authService.Signup(email, password, name);
+        const user = await authService.Signup(name, email, password);
         res.send({
             message: 'User created successfully',
             user: user
